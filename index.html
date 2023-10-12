@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>محاسبه قیمت با ارزش افزوده</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+
+      <div>
+        <i>logo</i>
+        <p>محاسبه قیمت با ارزش افزوده</p>
+      </div>
+
+      <div class="section1">
+
+        <div class="row">
+            <div>
+              <span>قیمت یک گرم 18 عیار:</span>
+              <span id="price">0</span>
+            </div>
+            <div>
+              <input type="text" id="priceInput" disabled value="0"/>
+            </div>
+        </div>
+
+        <div class="row">
+          <div>درصد اجرت:</div>
+          <div>
+            <select id="salaryPercentage" oninput="calculateSalaryInput()">
+              <option disabled>انتخاب کنید</option>
+            </select>
+          </div>
+          <div>
+            <input type="text" id="salaryInput" disabled value="0"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>درصد سود:</div>
+          <div>
+            <select id="profitPercentage" oninput="calculateProfitInput()">
+              <option disabled>انتخاب کنید</option>
+            </select>
+          </div>
+          <div>
+            <input type="text" id="profitInput" disabled value="0"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>وزن به گرم:</div>
+          <div></div>
+          <div>
+            <input type="text" id="weight" oninput="calculator()" autofocus/>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="section2">
+        <div class="section2-row">
+          <span>ارزش طلا:</span>
+          <span id="value">0</span>
+        </div>
+        <div class="section2-row">
+          <span>دستمزد:</span>
+          <span id="salary">0</span>
+        </div>
+        <div class="section2-row">
+          <span>سود:</span>
+          <span id="profit">0</span>
+        </div>
+        <div class="section2-row">
+          <span>ارزش افزوده:</span>
+          <span id="tax">0</span>
+        </div>
+        <div class="section2-row">
+          <span>قیمت طلای ساخته:</span>
+          <span id="final">0</span>
+        </div>
+      </div>
+
+      <div class="footer">
+        <button onclick="clearForm()">پاک کردن</button>
+        <button>بازگشت</button>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

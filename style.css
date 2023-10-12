@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: customFont;
+}
+@font-face {
+    font-family: customFont;
+    src: url('Font.ttf');
+}
+input{
+    direction: ltr;
+    padding: 7px;
+    padding-inline: 12px;
+    border: none;
+    background: #fff;
+    border-radius: 3px;
+    color: #777777;
+    width: 100%;
+}
+input:focus{
+    outline: #0ee7e7 2px solid;
+    outline-offset: 1px;
+}
+input:disabled{
+    background: #ebebeb;
+}
+select{
+    width: 95%;
+    direction: ltr;
+    padding: 7px;
+    padding-inline: 12px;
+    border: none;
+    border-radius: 3px;
+    color: #777777;
+    background: #fff;
+}
+select:focus{
+    outline: #0ee7e7 2px solid;
+    outline-offset: 1px;
+}
+select option {
+    background: #fff;
+}
+body{
+    background-color: blue;
+    width: 100%;
+}
+
+.container{
+    padding: 20px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    gap: 20px;
+}
+
+.section1{
+    display: grid;
+    gap: 1px;
+}
+.row{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+}
+.row:first-child div:first-child{
+    grid-column: span 2 / span 2;
+    font-weight: 700;
+    text-align: center;
+}
+.row:first-child div:nth-child(2){
+    grid-column: span 2 / span 2;
+    margin-top: auto;
+}
+.row:nth-child(2) div:first-child,.row:nth-child(2) div:nth-child(2),.row:nth-child(3) div:first-child,.row:nth-child(3) div:nth-child(2){
+    grid-column: span 1 / span 1;
+}
+.row:nth-child(2) div:nth-child(3),.row:nth-child(3) div:nth-child(3),.row:nth-child(4) div:first-child,.row:nth-child(4) div:nth-child(1){
+    grid-column: span 2 / span 2;
+}
+
+.section2{
+    border: 1px solid;
+    border-radius: 10px;
+    background: rgb(0, 0, 192);
+    padding: 20px;
+}
+.section2-row{
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer button{
+    padding: 5px;
+    padding-inline: 25px;
+    border: none;
+    background: #999999;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.footer button:nth-child(2){
+    background: #20c734;
+}
+
+.footer button:hover{
+    background: #858585;
+}
+
+.footer button:nth-child(2):hover{
+    background: #1ba42b;
+}
