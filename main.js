@@ -26,11 +26,11 @@ const initWeightInput = () => {
 const calculator = () => {
   let auth = document.getElementById("weight").value;
   if (auth != "") {
-    document.getElementById("value").innerText = calculateValue();
-    document.getElementById("salary").innerText = calculateSalary();
-    document.getElementById("profit").innerText = calculateProfit();
-    document.getElementById("tax").innerText = calculateTax();
-    document.getElementById("final").innerText = calculateFinal();
+    document.getElementById("value").innerText = formatData(calculateValue());
+    document.getElementById("salary").innerText = formatData(calculateSalary());
+    document.getElementById("profit").innerText = formatData(calculateProfit());
+    document.getElementById("tax").innerText = formatData(calculateTax());
+    document.getElementById("final").innerText = formatData(calculateFinal());
   } else {
     clearForm();
   }
@@ -38,7 +38,7 @@ const calculator = () => {
 
 const calculateValue = () => {
   D = document.getElementById("weight").value;
-  return formatData(D * C);
+  return D * C;
 };
 
 const calculateSalary = () => {
@@ -54,7 +54,12 @@ const calculateSalary = () => {
 
 const calculateProfit = () => {
   B = document.getElementById("profitPercentage").value;
-  F = (E + C) * (B / 100);
+  D = document.getElementById("weight").value;
+  if (D) {
+    F = (E + C) * (B / 100) * D;
+  } else {
+    F = (E + C) * (B / 100) * 1;
+  }
   return parseInt(F);
 };
 
@@ -65,7 +70,7 @@ const calculateTax = () => {
 
 const calculateFinal = () => {
   H = C + E + F + G;
-  return formatData(parseInt(H));
+  return parseInt(H);
 };
 
 const fillProfitPercentage = () => {
