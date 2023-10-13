@@ -1,26 +1,22 @@
 let data = null;
-let C, E, F, G, D;
+let A, B, C, E, F, G, D, H;
 const init = async () => {
   await getData();
+  C = data[1];
   fillPriceHolder();
   fillSalaryPercentage();
   fillProfitPercentage();
   initWeightInput();
-  let value = initSalaryInput();
-  initProfitInput(value);
+  initSalaryInput();
+  initProfitInput();
 };
 
 const initSalaryInput = () => {
-  let salary =
-    data[1] * (document.getElementById("salaryPercentage").value / 100);
-  document.getElementById("salaryInput").value = salary;
-  return salary;
+  document.getElementById("salaryInput").value = calculateSalary();
 };
 
-const initProfitInput = (salary) => {
-  document.getElementById("profitInput").value =
-    salary +
-    data[1] * (document.getElementById("profitPercentage").value / 100);
+const initProfitInput = () => {
+  document.getElementById("profitInput").value = calculateProfit();
 };
 
 const initWeightInput = () => {
@@ -30,50 +26,46 @@ const initWeightInput = () => {
 const calculator = () => {
   let auth = document.getElementById("weight").value;
   if (auth != "") {
-    calculateValue();
-    calculateSalary();
-    calculateProfit();
-    calculateTax();
-    calculateFinal();
+    document.getElementById("value").innerText = calculateValue();
+    document.getElementById("salary").innerText = calculateSalary();
+    document.getElementById("profit").innerText = calculateProfit();
+    document.getElementById("tax").innerText = calculateTax();
+    document.getElementById("final").innerText = calculateFinal();
+  } else {
+    clearForm();
   }
 };
 
 const calculateValue = () => {
   D = document.getElementById("weight").value;
-  C = data[1];
-  let result = D * C;
-  document.getElementById("value").innerText = formatData(result);
+  return formatData(D * C);
 };
 
 const calculateSalary = () => {
-  let A = document.getElementById("salaryPercentage").value;
-  let result = C * (A / 100) * D;
-  E = parseInt(result);
-  document.getElementById("salary").innerText = formatData(parseInt(result));
+  A = document.getElementById("salaryPercentage").value;
+  D = document.getElementById("weight").value;
+  if (D) {
+    E = C * (A / 100) * D;
+  } else {
+    E = C * (A / 100) * 1;
+  }
+  return parseInt(E);
 };
 
 const calculateProfit = () => {
-  let B = document.getElementById("profitPercentage").value;
-  let C = data[1];
-  let result = E + C * (B / 100);
-  F = parseInt(result);
-  document.getElementById("profit").innerText = formatData(parseInt(result));
+  B = document.getElementById("profitPercentage").value;
+  F = (E + C) * (B / 100);
+  return parseInt(F);
 };
 
 const calculateTax = () => {
-  let result = (E + F) * (9 / 100);
-  G = parseInt(result);
-  document.getElementById("tax").innerText = formatData(parseInt(result));
+  G = (E + F) * (9 / 100);
+  return parseInt(G);
 };
 
 const calculateFinal = () => {
-  console.log(C);
-  console.log(E);
-  console.log(F);
-  console.log(G);
-  console.log(D);
-  let result = (C + E + F + G) * D;
-  document.getElementById("final").innerText = formatData(result);
+  H = C + E + F + G;
+  return formatData(parseInt(H));
 };
 
 const fillProfitPercentage = () => {
@@ -123,22 +115,6 @@ const clearForm = () => {
   dbprofit = 0;
   dbtax = 0;
   dbval = 0;
-};
-
-const calculateSalaryInput = () => {
-  let salaryPer = document.getElementById("salaryPercentage").value;
-  let dbprice = data[1];
-  let salary = dbprice * (salaryPer / 100);
-  dbsalary = parseInt(salary);
-  document.getElementById("salaryInput").value = parseInt(salary);
-};
-
-const calculateProfitInput = () => {
-  let profitPer = document.getElementById("profitPercentage").value;
-  let dbprice = data[1];
-  let profit = dbsalary + dbprice * (profitPer / 100);
-  dbprofit = parseInt(profit);
-  document.getElementById("profitInput").value = parseInt(profit);
 };
 
 const getData = async () => {
