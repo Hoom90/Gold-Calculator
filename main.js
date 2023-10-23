@@ -44,10 +44,9 @@ const calculateValue = () => {
 const calculateSalary = () => {
   A = document.getElementById("salaryPercentage").value;
   D = document.getElementById("weight").value;
+  E = C * (A / 100);
   if (D) {
-    E = C * (A / 100) * D;
-  } else {
-    E = C * (A / 100) * 1;
+    E = E * D;
   }
   return parseInt(E);
 };
@@ -55,10 +54,10 @@ const calculateSalary = () => {
 const calculateProfit = () => {
   B = document.getElementById("profitPercentage").value;
   D = document.getElementById("weight").value;
+  let tempE = C * (A / 100);
+  F = (tempE + C) * (B / 100);
   if (D) {
-    F = (E + C) * (B / 100) * D;
-  } else {
-    F = (E + C) * (B / 100) * 1;
+    F = F * D;
   }
   return parseInt(F);
 };
@@ -116,10 +115,10 @@ const clearForm = () => {
   document.getElementById("profit").innerText = 0;
   document.getElementById("tax").innerText = 0;
   document.getElementById("final").innerText = 0;
-  dbsalary = 0;
-  dbprofit = 0;
-  dbtax = 0;
-  dbval = 0;
+  E = 0;
+  F = 0;
+  G = 0;
+  H = 0;
 };
 
 const getData = async () => {
